@@ -1,0 +1,6 @@
+flask
+torch
+torchaudio
+transformers
+librosa
+
