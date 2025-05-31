@@ -5,6 +5,7 @@ const cors = require('cors');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const mime = require('mime-types');
 
 const app = express();
 app.use(cors());
@@ -16,10 +17,14 @@ app.get('/health', (req, res) => res.send('OK'));
 // Gender endpoint
 app.post('/api/detect-gender', upload.single('audio'), (req, res) => {
   console.log('🔔 Received request');
+
   if (!req.file) return res.status(400).json({ error: 'No file uploaded under key "audio".' });
 
   const audioPath = path.resolve(req.file.path);
+  const mimeType = mime.lookup(req.file.originalname);  // Use original file name
   console.log('🐍 Spawning Python for', audioPath);
+  console.log('🎧 Detected MIME type:', mimeType);
+
 
   const py = spawn('python', ['detect_gender.py', audioPath], { shell: true });
   let stdout = '', stderr = '';

@@ -18,7 +18,7 @@ def main(audio_path):
     # load audio via librosa
     waveform, sample_rate = librosa.load(audio_path, sr=None, mono=True)
     # run inference
-    result = classifier({
+    result = classifier({   
         "array": waveform.astype(np.float32),
         "sampling_rate": sample_rate
     })
