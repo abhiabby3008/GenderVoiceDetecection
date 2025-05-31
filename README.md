@@ -40,7 +40,7 @@ This repository contains the backend service for **Voice Gender Recognition**. I
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/voice-gender-backend.git
+git clone https://github.com/abhiabby3008/voice-gender-backend.git
 cd voice-gender-backend
 ```
 
